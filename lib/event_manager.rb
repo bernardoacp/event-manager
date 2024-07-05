@@ -89,9 +89,9 @@ contents.each do |row|
 end
 
 hours = hours.sort_by { |_, value| value }
-hours.each { |key, value| puts "#{key}: #{value}"}
+hours.each { |key, value| puts "#{key}: #{value}" }
 
 puts
 
 days = days.sort_by { |_, value| value }
-days.each { |key, value| puts "#{key}: #{value}"}
+days.each { |key, value| puts "#{key}: #{value}" }
