@@ -15,7 +15,7 @@ def legislators_by_zipcode(zip)
       address: zip,
       levels: "country",
       roles: %w[legislatorUpperBody legislatorLowerBody]
-    )
+    ).officials
   rescue
     "You can find your representatives by visiting www.commoncause.org/take-action/find-elected-officials"
   end
