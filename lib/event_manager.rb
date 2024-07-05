@@ -6,6 +6,16 @@ def clean_zipcode(zipcode)
   zipcode.to_s.rjust(5, "0")[0..4]
 end
 
+def clean_phone_number(number)
+  number = number.tr("^0-9", "")
+
+  return number if number.length == 10
+
+  return number[1..10] if number.length == 11 && number[0] == "1"
+
+  "Bad number"
+end
+
 def legislators_by_zipcode(zip)
   civic_info = Google::Apis::CivicinfoV2::CivicInfoService.new
   civic_info.key = File.read("key.txt").strip
@@ -47,6 +57,8 @@ contents.each do |row|
   name = row[:first_name]
 
   zipcode = clean_zipcode(row[:zipcode])
+  number = clean_phone_number(row[:homephone])
+  puts number
 
   legislators = legislators_by_zipcode(zipcode)
 
